@@ -1,10 +1,8 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
-from typing import Optional
-from routes.user import user
+from routes.user import user_router
 
 app = FastAPI()
 
-app.include_router(user)
+app.include_router(user_router, prefix="/users")
 
 

@@ -1,17 +1,13 @@
-# from pydantic import BaseModel
-# from typing import Optional
+from models.user import User
+from bson import ObjectId
 
-
-# class User(BaseModel):
-#     id:Optional[str]
-#     name:str
-#     email:str
-#     password:str
-
-def user(item)-> dict:
+def user_schema(user) -> dict:
     return {
-        "id":item["id"],
-        "name":item["name"],
-        "email":item["email"],
-        "password":["password"]
+        "nombre": user["nombre"],
+        "email": user["email"],
+        "password":user["password"]
+   
     }
+
+def users_schema(users) -> list:
+    return [user_schema(user) for user in users]
